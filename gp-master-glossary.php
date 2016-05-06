@@ -11,15 +11,15 @@
  * The id of the project that should be used as a master glossary.
  * Define this in wp-config.php
  */
-// define( 'GP_MASTER_GLOSSARY_PROJECT', <intval> );
+// define( 'GP_MASTER_GLOSSARY_PROJECT_ID', <intval> );
 
 add_filter( 'gp_get_translation_set_glossary', function( $glossary, $project, $translation_set ) {
 
-	if ( ! defined( 'GP_MASTER_GLOSSARY_PROJECT' ) ) {
+	if ( ! defined( 'GP_MASTER_GLOSSARY_PROJECT_ID' ) ) {
 		return $glossary;
 	}
 
-	$main_translation_set = GP::$translation_set->by_project_id_slug_and_locale( GP_MASTER_GLOSSARY_PROJECT, $translation_set->slug , $translation_set->locale );
+	$main_translation_set = GP::$translation_set->by_project_id_slug_and_locale( GP_MASTER_GLOSSARY_PROJECT_ID, $translation_set->slug , $translation_set->locale );
 
 	if ( ! $main_translation_set ) {
 		return $glossary;
