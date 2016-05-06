@@ -27,11 +27,13 @@ add_filter( 'gp_get_translation_set_glossary', function( $glossary, $project, $t
 
 	$master_glossary = GP::$glossary->by_set_id( $main_translation_set->id );
 
-	if ( ! $glossary ) {
-		return $master_glossary;
+	if ( ! $master_glossary ) {
+		return $glossary;
 	}
 
-	$glossary->entries = array_merge( $master_glossary->get_entries(), $glossary->get_entries() );
+	if ( $glossary instanceof GP_Glossary && $master_glossary instanceof GP_Glossary ) {
+		$glossary->entries = array_merge( $master_glossary->get_entries(), $glossary->get_entries() );
+	}
 
 	return $glossary;
 }, 10, 3 );
