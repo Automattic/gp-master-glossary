@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GlotPress Master Glossary
  * Author: Automattic
- * Version: 0.1
+ * Version: 0.9
  */
 
 /**
@@ -25,9 +25,11 @@ add_filter( 'gp_get_translation_set_glossary', function( $glossary, $project, $t
 
 	$master_glossary = GP::$glossary->by_set_id( $main_translation_set->id );
 
-	if ( ! is_array( $glossary ) ) {
+	if ( ! $glossary ) {
 		return $master_glossary;
 	}
 
-	return array_merge( $glossary, $master_glossary );
+	$glossary->entries = array_merge( $master_glossary->get_entries(), $glossary->get_entries() );
+
+	return $glossary;
 }, 10, 3 );
