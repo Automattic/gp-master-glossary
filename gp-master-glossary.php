@@ -3,6 +3,8 @@
  * Plugin Name: GlotPress Master Glossary
  * Author: Automattic
  * Version: 0.9
+ *
+ * Description: GlotPress plugin that allows to define a project as source of a master (base) glossary.
  */
 
 /**
