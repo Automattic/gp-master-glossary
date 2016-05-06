@@ -12,3 +12,5 @@ Add this to your `wp-config.php` file and change `123` to the id of the project 
 ```
 define( 'GP_MASTER_GLOSSARY_PROJECT', 123 );
 ```
+
+Enable the plugin through wp-admin.
